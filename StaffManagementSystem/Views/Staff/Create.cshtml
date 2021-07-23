@@ -1,0 +1,106 @@
+﻿@model StaffManagementSystem.Models.TblStaff
+
+
+<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">ADD STAFF</a>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h3 class="modal-title">StaffManagement</h3>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-group" asp-action="Create" asp-method="post" id="myForm">
+
+                    <div>
+                        <label asp-for="StaffName"></label>
+                        <input asp-for="StaffName" />
+                        <span asp-validation-for="StaffName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="YearsExperience"></label>
+                        <input type="tel" asp-for="YearsExperience" />
+                        <span asp-validation-for="YearsExperience" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+                @*<input type="reset" value="Submit" class="btn btn-success" id="btnSubmit" />*@
+                <button type="submit" id="btnSubmit" class="btn btn-primary">Add Staff</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@*@section Scripts{
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+
+            $("#btnSubmit").click(function () {
+
+
+                var myformdata = $("#myForm").serialize();
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "/Staff/Create",
+                    data: myformdata,
+                    success: function () {
+                        $("#myModal").modal("hide");
+
+                    }
+
+                })
+            })
+
+        })
+
+
+    </script>
+}*@
+
+
+
+
+@*<form class="form-group" asp-action="Create" asp-method="post">
+
+        <div>
+            <label asp-for="StaffName"></label>
+            <input asp-for="StaffName" />
+            <span asp-validation-for="StaffName" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="YearsExperience"></label>
+            <input type="tel" asp-for="YearsExperience" />
+            <span asp-validation-for="YearsExperience" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Staff</button>
+    </form>*@

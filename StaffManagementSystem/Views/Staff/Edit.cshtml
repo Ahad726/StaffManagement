@@ -1,0 +1,23 @@
+﻿@model StaffManagementSystem.Models.TblStaff
+
+
+
+<form asp-action="Edit" asp-method="post" class="form-group">
+
+    <div>
+        <label asp-for="StaffName"></label>
+        <input asp-for="StaffName" />
+        <span asp-validation-for="StaffName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+    <div>
+        <label asp-for="YearsExperience"></label>
+        <input type="tel" asp-for="YearsExperience" />
+        <span asp-validation-for="YearsExperience" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit Staff</button>
+</form> 

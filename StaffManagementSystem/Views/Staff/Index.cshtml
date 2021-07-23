@@ -1,0 +1,139 @@
+﻿
+@model StaffManagementSystem.Models.TblStaff
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Add Staff
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">title-Staff Management</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" id="myForm" novalidate>
+                    <div class="form-group">
+                        <label asp-for="StaffName"></label>
+                        <input type="text" class="form-control" name="StaffName" id="Staff_Name" aria-describedby="staffHelp" placeholder="Enter Staff Name" required>
+                        <div class="invalid-feedback">
+                            Please enter Staff Name
+                        </div>
+                        <small id="staffHelp" class="form-text text-muted">We'll never share your Name with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                        <input type="text" asp-for="PhoneNumber" class="form-control" id="exampleInputPassword1" placeholder="Phone Number" required>
+                        <div class="invalid-feedback">
+                            Please enter a Phone Number
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="YearsExperience"></label>
+                        <input type="text" asp-for="YearsExperience" class="form-control" id="exampleInputPassword1" placeholder="Years of Experrience" required>
+                        <div class="invalid-feedback">
+                            Please enter your experience year.!
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<div class="container">
+
+    <br />
+    <div style="width:90%; margin:0 auto;">
+        <table id="staffDatatable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+
+
+            <thead>
+                <tr>
+
+                    <th>
+                        Staff Name
+                    </th>
+                    <th>
+                        Phone Number
+                    </th>
+                    <th>
+                        skill ID
+                    </th>
+                    <th>
+                        Years of Experience
+                    </th>
+                    <th>
+                        Staff ID
+                    </th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/CreatePopUPModal.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#staffDatatable').DataTable({
+                "ajax": "staff/ajaxmethod",
+                "columns": [
+                    { data: "staffName" },
+                    { data: "phoneNumber" },
+                    { data: "skillId" },
+                    { data: "yearsExperience" },
+                    { data: "staffId" },
+                ],
+                
+            });
+        });
+
+    </script>
+
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+}
