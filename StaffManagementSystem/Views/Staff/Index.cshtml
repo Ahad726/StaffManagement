@@ -79,7 +79,6 @@
                         Years of Experience
                     </th>
                     <th>
-                        Staff ID
                     </th>
 
                 </tr>
@@ -106,9 +105,23 @@
                     { data: "phoneNumber" },
                     { data: "skillId" },
                     { data: "yearsExperience" },
-                    { data: "staffId" },
+                    {
+                        data: "staffId",
+                        render: function (data) {
+                            return `
+                                <div class="text-center">
+                                    <a href="/Staff/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
+                                        Edit
+                                    </a>
+                                    <a  href="/Staff/Delete/${data}" class="btn btn-danger text-white" style="cursor:pointer">
+                                        Delete
+                                    </a>
+                                </div>
+                               `;
+                        }
+                    },
                 ],
-                
+
             });
         });
 
