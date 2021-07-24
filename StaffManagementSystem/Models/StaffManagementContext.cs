@@ -26,7 +26,7 @@ namespace StaffManagementSystem.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=StaffManagement;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=StaffManagement;Trusted_Connection=True;");
             }
         }
 

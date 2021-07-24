@@ -244,6 +244,7 @@ namespace StaffManagementSystem.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
@@ -253,11 +254,13 @@ namespace StaffManagementSystem.Migrations
                         .HasColumnName("SkillID");
 
                     b.Property<string>("StaffName")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
                     b.Property<int?>("YearsExperience")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("StaffId")

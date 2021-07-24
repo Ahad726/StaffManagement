@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StaffManagementSystem.Migrations
 {
-    public partial class AddingIdenity : Migration
+    public partial class staffDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,9 +46,34 @@ namespace StaffManagementSystem.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
-            
+            migrationBuilder.CreateTable(
+                name: "tblSkills",
+                columns: table => new
+                {
+                    SkillID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK__tblSkill__DFA091E71173ABD6", x => x.SkillID);
+                });
 
-            
+            migrationBuilder.CreateTable(
+                name: "tblStaff",
+                columns: table => new
+                {
+                    StaffID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StaffName = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    SkillID = table.Column<int>(type: "int", nullable: true),
+                    YearsExperience = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK__tblStaff__96D4AAF7C97C603E", x => x.StaffID);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
